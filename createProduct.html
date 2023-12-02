@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./assets/css/adminPage.css">
+        <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.4.2-web/css/all.min.css">
+    </head>
+
+    <body>
+        <div class="app">
+            <header class="header">
+                <div class="header-wrapper">
+                    <div class="logo">
+                        <a href="adminPage.html">ADMIN</a>
+                    </div>
+                    <div class="header-tag">
+                        <div class="tag-item">
+                            <a href="">Dashboard</a>
+                        </div>
+                        <div class="tag-item">
+                            <a href="">Plant</a>
+                        </div>
+                        <div class="tag-item">
+                            <a href="">Customer</a>
+                        </div>
+                        <div class="tag-item">
+                            <a href="">Chart</a>
+                        </div>
+                    </div>
+                    <div class="header-login">
+                        <a href="login.html">Login</a>
+                    </div>
+                </div>
+            </header>
+            <div class="main">
+                <div class="formWrapper">
+                    <div class="result">
+                        <div class="success-msg">
+                            <i class="fa-solid fa-circle-check"></i>
+                            Add new plant successfully
+                        </div>
+                        <div class="error-msg">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                            Add new plant failed
+                        </div>
+                    </div>
+                    <form method="post" class="formCreate" id="plantForm">
+                        <div class="inputTitle">
+                            <h1 class="title">Add New Plant</h1>
+                        </div>
+                        <div class="inputWrapper">
+                            <div class="infomation l-5">
+                                <div class="inputPlant">
+                                    <label for="name" class="label">Tên sản phẩm</label>
+                                    <input type="text" name="name" class="input">
+                                </div>
+                                <div class="inputPlant">
+                                    <label for="oldPrice" class="label">Giá cũ</label>
+                                    <input type="text" name="oldPrice" class="input">
+                                </div>
+                                <div class="inputPlant">
+                                    <label class="label">Loại</label>
+                                    <div class="typeInput">
+                                        <select name="type" id="type">
+                                            <option>--Choose type--</option>
+                                            <option value="senda">Sen đá</option>
+                                            <option value="lan">Lan</option>
+                                            <option value="cactus">Xương rồng</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="inputPlant">
+                                    <label for="sale" class="label">Giảm giá</label>
+                                    <input type="text" name="sale" class="input" onchange="myFunction()">
+                                </div>
+                                <div class="inputPlant">
+                                    <label for="newPrice" class="label">Giá mới</label>
+                                    <input type="text" name="newPrice" class="input" disabled>
+                                </div>
+                                <div class="inputPlant">
+                                    <label for="description" class="label">Mô tả</label>
+                                    <textarea name="description" class="descriptionText" cols="70" rows="10"
+                                        onchange="test()"></textarea>
+                                </div>
+                            </div>
+                            <div class="upload-image l-7">
+                                <div class="container">
+                                    <input name="image" type="file" id="file" accept="image/*" hidden>
+                                    <div class="img-area" data-img="">
+                                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                                        <h3>Upload Image</h3>
+                                    </div>
+                                    <label name="image" class="select-image">Chọn hình ảnh</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btnSubmit">
+                            <button type="button" onclick="submitForm()">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="toast"></div>
+
+        <script>
+
+            const success = document.querySelector('.success-msg');
+            const error = document.querySelector('.error-msg');
+
+            const oldPrice = document.querySelector('input[name="oldPrice"]');
+            const sale = document.querySelector('input[name="sale"]');
+            const newPrice = document.querySelector('input[name="newPrice"]');
+            const description = document.querySelector('textarea[name="description"]')
+
+            function myFunction() {
+                console.log(oldPrice.value);
+                console.log(sale.value);
+                var value = oldPrice.value - oldPrice.value * sale.value / 100;
+                newPrice.value = value;
+            }
+
+            function test() {
+                console.log(description.value);
+            }
+
+            function submitForm() {
+                // Get form values
+                const name = document.querySelector('input[name="name"]').value;
+                const type = document.querySelector('select[name="type"]').value;
+                const oldPrice = document.querySelector('input[name="oldPrice"]').value;
+                const sale = document.querySelector('input[name="sale"]').value;
+                const newPrice = document.querySelector('input[name="newPrice"]').value;
+                const description = document.querySelector('textarea[name="description"]').value;
+                const imageFile = document.querySelector('input[name="image"]').files[0];
+
+                // Create a FormData object to handle file uploads
+                const formData = new FormData();
+                formData.append('name', name);
+                formData.append('type', type);
+                formData.append('oldPrice', oldPrice);
+                formData.append('sale', sale);
+                formData.append('newPrice', newPrice);
+                formData.append('description', description);
+                formData.append('file', imageFile);
+
+                const accessToken = localStorage.getItem('token');
+                const headers = new Headers({
+                    'Authorization': `Bearer ${accessToken}`,
+                });
+
+                // Make a POST request to the API
+                fetch('http://localhost:8080/admin/plant/create', {
+                    method: 'GET',
+                    body: formData,
+                    headers: headers
+                })
+                    .then((response) => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error('Request failed');
+                        }
+                    })
+                    .then((data) => {
+                        console.log(data);
+                        success.style.display = 'block';
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                        error.style.display = 'block';
+                    });
+
+            }
+
+            const selectImage = document.querySelector('.select-image');
+            const inputFile = document.querySelector('#file');
+            const imgArea = document.querySelector('.img-area');
+
+            selectImage.addEventListener('click', function () {
+                inputFile.click();
+            })
+
+            inputFile.addEventListener('change', function (e) {
+                const image = this.files[0]
+                if (image.size < 2000000) {
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                        const allImg = imgArea.querySelectorAll('img');
+                        allImg.forEach(item => item.remove());
+                        const imgUrl = reader.result;
+                        const img = document.createElement('img');
+                        img.src = imgUrl;
+                        imgArea.appendChild(img);
+                        imgArea.classList.add('active');
+                        imgArea.dataset.img = image.name;
+                    }
+                    reader.readAsDataURL(image);
+                } else {
+                    alert("Image size more than 2MB");
+                }
+                // if (e.target.files.length) {
+                //     const src = URL.createObjectURL(e.target.files[0]);
+                //     imgArea.src = src;
+                // }
+            })
+
+        </script>
+    </body>
+
+</html>
