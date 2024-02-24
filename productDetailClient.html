@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MILOISM</title>
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+        <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.4.2-web/css/all.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    </head>
+
+    <body>
+        <div class="app productdetail">
+            <header>
+                <div class="headerLogoWrapper">
+                    <div class="header-logo">
+                        <a href="index.html" class="logo">MI<span>LO</span><i class="fas fa-seedling"></i><span>SM</span></a>
+                        <div action="" class="serach-bar-container">
+                            <input type="search" id="search-bar" placeholder="Tìm kiếm...">
+                            <button type="button" class="fas fa-search"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="headerMenuWrapper">
+                    <div class="header-menu">
+                        <div id="menu-bar" class="fas fa-bars "></div>
+                        <nav class="nav-bar">
+                            <a href="index.html">Trang chủ</a>
+                            <button onclick="showProductByType(this)" value="all">Sản phẩm</button>
+                            <a href="Contact.html">Liên hệ</a>
+                        </nav>
+                        <div class="icons">
+                            <a href="#" class="fas fa-shopping-cart" id="cart-btn"></a>
+                            <a href="login.html" id="login-btn"> Đăng nhập</a>
+                        </div>
+                        <div class="icons login">
+                            <a href="cart.html" class="fas fa-shopping-cart" id="cart-btn"></a>
+                            <a href="#" onclick="dropDownUser()" class="userLogin"></a>
+                            <div class="dropDownUser">
+                                <a href="profileUser.html" class="userInfo"><span>Thông tin người dùng</span></a>
+                                <a href="historyOrder.html" class="userCart"><span>Lịch sử mua hàng</span></a>
+                                <a href="#" class="logout">
+                                    <button onclick="logout()">
+                                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                        Đăng xuất
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container-product-detail">
+                <div class="box-product">
+                    <div class="images">
+                        <div class="img-holder active">
+                            <img src="images/senda.jpg">
+                        </div>
+                    </div>
+                    <div class="basic-info">
+                        <h1>Sen đá</h1>
+                        <div class="rate">
+                            <span>5.0</span>
+                            <i class="filled fas fa-star"></i>
+                            <i class="filled fas fa-star"></i>
+                            <i class="filled fas fa-star"></i>
+                            <i class="filled fas fa-star"></i>
+                            <i class="filled fas fa-star"></i>
+                        </div>
+                        <div class="price">$20.99 <span> $24.99</span></div>
+                        <div class="options">
+                            <button id="addToCart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="description">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus temporibus corporis
+                            repudiandae,
+                            consectetur nostrum nisi commodi placeat rerum molestias numquam nihil accusantium deleniti!
+                            Enim,
+                            nesciunt a quis amet hic officia. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Molestiae
+                            nemo accusantium tempora facere doloremque cum iusto, ut neque, fuga omnis libero laborum
+                            ullam. At
+                            dolorum qui atque labore illo dignissimos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-product-review">
+                <h4>ĐÁNH GIÁ SẢN PHẨM</h4>
+                <ul class="container-list-review">
+                    <li class="container-review">
+                        <div class="review-username">ABC</div>
+                        <div class="review-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="review-time">2023-12-10</div>
+                        <div class="review-content">Good</div>
+                    </li>
+                    <li class="container-review">
+                        <div class="review-username">ABC</div>
+                        <div class="review-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="review-time">2023-12-10</div>
+                        <div class="review-content">Good</div>
+                    </li>
+                    <li class="container-review">
+                        <div class="review-username">ABC</div>
+                        <div class="review-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="review-time">2023-12-10</div>
+                        <div class="review-content">Good</div>
+                    </li>
+                </ul>
+                <div class="form-review">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#form">
+                        Viết đánh giá
+                    </button>
+                    <div class="modal" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="text-right cross">
+                                    <i class="fa fa-times mr-2"></i>
+                                </div>
+                                <div class="card-body text-center">
+                                    <img src="./images/review.png" height="100" width="100">
+                                    <div class="comment-box text-center">
+                                        <h4>Đánh giá sản phẩm</h4>
+                                        <div class="rating">
+                                            <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                                            <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                                            <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                                            <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                                            <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                                        </div>
+                                        <div class="comment-area">
+                                            <textarea class="form-control" placeholder="Đánh giá của bạn về sản phẩm" rows="4"></textarea>
+                                            <div class="err-mess"></div>
+                                        </div>
+                    
+                                        <div class="text-center mt-4">
+                                            <button onclick="submitReviewProduct()" class="btn btn-success send px-5">
+                                                Đánh giá
+                                                <i class="fa fa-long-arrow-right ml-1"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="footer" id="Contact">
+                <div class="box-container">
+                    <div class="box l-2-4 m-6 c-6">
+                        <h3>VỀ CHÚNG TÔI</h3>
+                        <span>Giới thiệu</span>
+                    </div>
+            
+                    <div class="box l-2-4 m-6 c-6">
+                        <h3>CHÍNH SÁCH</h3>
+                        <ul>
+                            <li>Chính sách bảo hành</li>
+                            <li>Chính sách thanh toán</li>
+                            <li>Chính sách giao hàng</li>
+                            <li>Chính sách bảo mật</li>
+                        </ul>
+                    </div>
+            
+                    <div class="box l-2-4 m-6 c-6">
+                        <h3>THÔNG TIN LIÊN HỆ</h3>
+                        <a href="#"> <i class="fas fa-phone"></i> 0123456789 </a>
+                        <a href="#"> <i class="fas fa-envelope"></i> milosm@gmail.com </a>
+                        <a href="#"> <i class="fas fa-map-marker-alt"></i> Số 2, Đường Võ Oanh, P.25, Q. Bình Thạnh, Thành Phố Hồ
+                            Chí Minh </a>
+                    </div>
+            
+                    <div class="box l-2-4 m-6 c-6">
+                        <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
+                        <a href="#"> <i class="fa-brands fa-square-facebook" id="facebook" style="color: blue;"></i> Facebook </a>
+                        <a href="#"> <i class="fa-brands fa-square-twitter" id="twitter" style="color: aqua;"></i> Twitter </a>
+                        <a href="#"> <i class="fab fa-instagram" id="instagram" aria-hidden="true"></i> Instagram </a>
+                    </div>
+                </div>
+            </section>
+            <div class="logo-bct-container">
+                <div class="logo-bct-img">
+                    <img src="./images/logo-bct.webp" alt="logo-bct">
+                </div>
+            </div>
+        </div>
+
+        <div id="toast"></div>
+
+        <script async src="./assets/js/index.js"></script>
+        <script>
+            $('.fa-times').on('click', function () {
+                $('#form').modal('hide');
+            });
+        </script>
+    </body>
+
+</html>

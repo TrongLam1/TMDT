@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MILOISM</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.4.2-web/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body>
+    <div class="app">
+      <!-- header -->
+      <header>
+        <div class="headerLogoWrapper">
+          <div class="header-logo">
+            <a href="index.html" class="logo">MI<span>LO</span><i class="fas fa-seedling"></i><span>SM</span></a>
+            <div action="" class="serach-bar-container">
+              <input type="search" id="search-bar" placeholder="Tìm kiếm...">
+              <button type="button" class="fas fa-search"></button>
+            </div>
+          </div>
+        </div>
+        <div class="headerMenuWrapper">
+          <div class="header-menu">
+            <div id="menu-bar" class="fas fa-bars "></div>
+            <nav class="nav-bar">
+              <a href="index.html">Trang chủ</a>
+              <button onclick="showProductByType(this)" value="all">Sản phẩm</button>
+              <a href="Contact.html">Liên hệ</a>
+            </nav>
+            <div class="icons">
+              <a href="#" class="fas fa-shopping-cart" id="cart-btn"></a>
+              <a href="login.html" id="login-btn"> Đăng nhập</a>
+            </div>
+            <div class="icons login">
+              <a href="cart.html" class="fas fa-shopping-cart" id="cart-btn"></a>
+              <a href="#" onclick="dropDownUser()" class="userLogin"></a>
+              <div class="dropDownUser">
+                <a href="profileUser.html" class="userInfo"><span>Thông tin người dùng</span></a>
+                <a href="historyOrder.html" class="userCart"><span>Lịch sử mua hàng</span></a>
+                <a href="#" class="logout">
+                  <button onclick="logout()">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Đăng xuất
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- body -->
+      <div class="bodyWrapper">
+        <div class="row-slide" id="Home">
+          <div class="l-6 m-6 c-6">
+            <h1>Plants will make your life better a new style</h1>
+            <p>Add freshness to your new ideas.</p>
+          </div>
+          <div class="l-6 m-6 c-6">
+            <!-- Slideshow container -->
+            <div class="slideshow-container">
+              <!-- Full-width images with number and caption text -->
+              <div class="mySlides fade">
+                <img src="images/slide1.jpg" style="width:100%" alt="c">
+              </div>
+              <div class="mySlides fade">
+                <img src="images/slide2.jpg" style="width:100%" alt="a">
+              </div>
+              <div class="mySlides fade">
+                <img src="images/slide3.jpg" style="width:100%" alt="b">
+              </div>
+              <!-- Next and previous buttons -->
+              <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
+              <!-- The dots/circles -->
+              <div style="text-align:center" class="button-dot">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- offer -->
+        <div class="offer">
+          <div class="small-container">
+            <div class="row">
+              <div class="l-6 m-6 c-6">
+                <img src="images/exclusive.png" class="offer-img">
+              </div>
+              <div class="l-6 m-6 c-6">
+                <p style="font-weight: bold;">Exclusively Available at Miloism Store</p>
+                <h1>Bird of Paradise</h1>
+                <p>Shopping with The Miloism Store means you’re
+                  supported
+                  every step of your plant parenthood journey. Become a member today to start enjoying exclusive perks.
+                </p>
+                <a href="" class="btn-buy">Mua ngay &#8594;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="products-container-1" id="products">
+          <h2 class="title">Sản phẩm nổi bật</h2>
+          <div class="productWrapper">
+            <div class="productContainer">
+              <div class="productContainer-type">
+                <h2>Sen đá</h2>
+                <button id="senda" value="senda" onclick="showProductByType(this)">Xem tất cả</button>
+              </div>
+              <div class="productList type1">
+                <div class="productItemWrapper l-2-4 m-4 c-6">
+                  <a href="#" class="productItem">
+                    <img src="./images/senda.jpg" alt="" class="productItem__img">
+                    <div class="productItemContainer__info">
+                      <div class="productItem__info l-9">
+                        <h4 class="productItem__name">Iphone 14 Pro Max 128Gb</h4>
+                        <div class="productItem__price">
+                          <span class="productItem__price-old">10.000.000đ</span>
+                          <div class="productItem__sale">
+                            <span class="productItem__price-current">9.000.000đ</span>
+                            <span class="discount"> -10%</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="productItemAdd l-3">
+                        <button><i class="fa-solid fa-cart-plus"></i></button>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="productItemWrapper l-2-4 m-4 c-6">
+                  <a href="#" class="productItem">
+                    <img src="./images/senda.jpg" alt="" class="productItem__img">
+                    <div class="productItemContainer__info">
+                      <div class="productItem__info l-9">
+                        <h4 class="productItem__name">Iphone 14 Pro Max 128Gb</h4>
+                        <div class="productItem__price">
+                          <span class="productItem__price-old">10.000.000đ</span>
+                          <div class="productItem__sale">
+                            <span class="productItem__price-current">9.000.000đ</span>
+                            <span class="discount"> -10%</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="productItemAdd l-3">
+                        <button><i class="fa-solid fa-cart-plus"></i></button>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="productContainer">
+              <div class="productContainer-type">
+                <h2>Lan</h2>
+                <button id="lan" value="lan" onclick="showProductByType(this)">Xem tất cả</button>
+              </div>
+              <div class="productList type2">
+                <div class="productItemWrapper l-2-4">
+                  <a href="#" class="productItem">
+                    <img src="./images/senda.jpg" alt="" class="productItem__img">
+                    <h4 class="productItem__name">Iphone 14 Pro Max 128Gb</h4>
+                    <div class="productItem__price">
+                      <span class="productItem__price-old">10.000.000đ</span>
+                      <div class="productItem__sale">
+                        <span class="productItem__price-current">9.000.000đ</span>
+                        <span class="discount"> -10%</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="productItemWrapper l-2-4">
+                  <a href="#" class="productItem">
+                    <img src="./images/senda.jpg" alt="" class="productItem__img">
+                    <h4 class="productItem__name">Iphone 14 Pro Max 128Gb</h4>
+                    <div class="productItem__price">
+                      <span class="productItem__price-old">10.000.000đ</span>
+                      <div class="productItem__sale">
+                        <span class="productItem__price-current">9.000.000đ</span>
+                        <span class="discount"> -10%</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="productContainer">
+              <div class="productContainer-type">
+                <h2>Xương rồng</h2>
+                <button id="cactus" value="cactus" onclick="showProductByType(this)">Xem tất cả</button>
+              </div>
+              <div class="productList type3">
+                <div class="productItemWrapper l-2-4">
+                  <a href="#" class="productItem">
+                    <img src="./images/senda.jpg" alt="" class="productItem__img">
+                    <h4 class="productItem__name">Iphone 14 Pro Max 128Gb</h4>
+                    <div class="productItem__price">
+                      <span class="productItem__price-old">10.000.000đ</span>
+                      <div class="productItem__sale">
+                        <span class="productItem__price-current">9.000.000đ</span>
+                        <span class="discount"> -10%</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="productItemWrapper l-2-4">
+                  <a href="#" class="productItem">
+                    <img src="./images/senda.jpg" alt="" class="productItem__img">
+                    <h4 class="productItem__name">Iphone 14 Pro Max 128Gb</h4>
+                    <div class="productItem__price">
+                      <span class="productItem__price-old">10.000.000đ</span>
+                      <div class="productItem__sale">
+                        <span class="productItem__price-current">9.000.000đ</span>
+                        <span class="discount"> -10%</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- footer -->
+      <section class="footer" id="Contact">
+        <div class="box-container">
+          <div class="box l-2-4 m-6 c-6">
+            <h3>VỀ CHÚNG TÔI</h3>
+            <span>Giới thiệu</span>
+          </div>
+
+          <div class="box l-2-4 m-6 c-6">
+            <h3>CHÍNH SÁCH</h3>
+            <ul>
+              <li>Chính sách bảo hành</li>
+              <li>Chính sách thanh toán</li>
+              <a href="shipping.html">Chính sách giao hàng</a>
+              <li>Chính sách bảo mật</li>
+            </ul>
+          </div>
+
+          <div class="box l-2-4 m-6 c-6">
+            <h3>THÔNG TIN LIÊN HỆ</h3>
+            <a href="#"> <i class="fas fa-phone"></i> 0123456789 </a>
+            <a href="#"> <i class="fas fa-envelope"></i> milosm@gmail.com </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Số 2, Đường Võ Oanh, P.25, Q. Bình Thạnh, Thành Phố Hồ
+              Chí Minh </a>
+          </div>
+
+          <div class="box l-2-4 m-6 c-6">
+            <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
+            <a href="#"> <i class="fa-brands fa-square-facebook" id="facebook" style="color: blue;"></i> Facebook </a>
+            <a href="#"> <i class="fa-brands fa-square-twitter" id="twitter" style="color: aqua;"></i> Twitter </a>
+            <a href="#"> <i class="fab fa-instagram" id="instagram" aria-hidden="true"></i> Instagram </a>
+          </div>
+        </div>
+      </section>
+      <div class="logo-bct-container">
+        <div class="logo-bct-img">
+          <img src="./images/logo-bct.webp" alt="logo-bct">
+        </div>
+      </div>
+    </div>
+
+    <div id="toast"></div>
+
+    <script>
+      // Slide script
+      let slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1 }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 2000);
+      }
+    </script>
+    <script async src="./assets/js/index.js"></script>
+  </body>
+
+</html>
