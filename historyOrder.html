@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lịch sử mua hàng</title>
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.4.2-web/css/all.min.css">
+        <link rel="stylesheet" href="./assets/css/sb-admin-2.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    </head>
+
+    <body>
+        <div class="app">
+            <header>
+                <div class="headerLogoWrapper">
+                    <div class="header-logo">
+                        <a href="index.html" class="logo">MI<span>LO</span><i class="fas fa-seedling"></i><span>SM</span></a>
+                        <div action="" class="serach-bar-container">
+                            <input type="search" id="search-bar" placeholder="Tìm kiếm...">
+                            <button type="button" class="fas fa-search"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="headerMenuWrapper">
+                    <div class="header-menu">
+                        <div id="menu-bar" class="fas fa-bars "></div>
+                        <nav class="nav-bar">
+                            <a href="index.html">Trang chủ</a>
+                            <button onclick="showProductByType(this)" value="all">Sản phẩm</button>
+                            <a href="Contact.html">Liên hệ</a>
+                        </nav>
+                        <div class="icons">
+                            <a href="#" class="fas fa-shopping-cart" id="cart-btn"></a>
+                            <a href="login.html" id="login-btn"> Đăng nhập</a>
+                        </div>
+                        <div class="icons login">
+                            <a href="cart.html" class="fas fa-shopping-cart" id="cart-btn"></a>
+                            <a href="#" onclick="dropDownUser()" class="userLogin"></a>
+                            <div class="dropDownUser">
+                                <a href="profileUser.html" class="userInfo"><span>Thông tin người dùng</span></a>
+                                <a href="historyOrder.html" class="userCart"><span>Lịch sử mua hàng</span></a>
+                                <a href="#" class="logout">
+                                    <button onclick="logout()">
+                                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                        Đăng xuất
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="main">
+                <div class="bodyWrapper">
+                    <nav class="navBody">
+                        <div class="amount">
+                            All Orders (10)
+                        </div>
+                    </nav>
+                    <div class="tableMain">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">ID</th>
+                                        <th class="text-center">Ngày đặt hàng</th>
+                                        <th class="text-center">Khách hàng</th>
+                                        <th class="text-center">Thanh toán</th>
+                                        <th class="text-center">Tình trạng đơn hàng</th>
+                                        <th class="text-center" colspan="2">Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tableHistoryOrder">
+                                    <tr>
+                                        <td class="text-center">Tiger Nixon</td>
+                                        <td class="text-center">System Architect</td>
+                                        <td class="text-center">Edinburgh</td>
+                                        <td class="text-center">61</td>
+                                        <td class="text-center">2011/04/25</td>
+                                        <td class="text-center">Đã giao</td>
+                                        <td class="text-center">Đã giao</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="footer" id="Contact">
+                <div class="box-container">
+                    <div class="box l-2-4 m-4 c-6">
+                        <h3>VỀ CHÚNG TÔI</h3>
+                        <span>Giới thiệu</span>
+                    </div>
+            
+                    <div class="box l-2-4 m-4 c-6">
+                        <h3>CHÍNH SÁCH</h3>
+                        <ul>
+                            <li>Chính sách bảo hành</li>
+                            <li>Chính sách thanh toán</li>
+                            <li>Chính sách giao hàng</li>
+                            <li>Chính sách bảo mật</li>
+                        </ul>
+                    </div>
+            
+                    <div class="box l-2-4 m-4 c-6">
+                        <h3>THÔNG TIN LIÊN HỆ</h3>
+                        <a href="#"> <i class="fas fa-phone"></i> 0123456789 </a>
+                        <a href="#"> <i class="fas fa-envelope"></i> milosm@gmail.com </a>
+                        <a href="#"> <i class="fas fa-map-marker-alt"></i> Số 2, Đường Võ Oanh, P.25, Q. Bình Thạnh, Thành Phố Hồ
+                            Chí Minh </a>
+                    </div>
+            
+                    <div class="box l-2-4 m-4 c-6">
+                        <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
+                        <a href="#"> <i class="fa-brands fa-square-facebook" id="facebook" style="color: blue;"></i> Facebook </a>
+                        <a href="#"> <i class="fa-brands fa-square-twitter" id="twitter" style="color: aqua;"></i> Twitter </a>
+                        <a href="#"> <i class="fab fa-instagram" id="instagram" aria-hidden="true"></i> Instagram </a>
+                    </div>
+                </div>
+            </section>
+            <div class="logo-bct-container">
+                <div class="logo-bct-img">
+                    <img src="./images/logo-bct.webp" alt="logo-bct">
+                </div>
+            </div>
+        </div>
+
+        <div id="myModal" class="modal">
+            <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                    <div class="modal-header flex-column">
+                        <div class="icon-box">
+                            <div class="material-icons"></div>
+                        </div>
+                        <h4 class="modal-title w-100">Bạn chắc chắn?</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Bạn muốn hủy đơn hàng?</p>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button onclick="cancelModal()" type="button" class="btn btn-secondary" data-dismiss="modal">
+                            Hủy bỏ
+                        </button>
+                        <button onclick="confirmCancelOrder()" type="button" class="btn btn-danger">
+                            Xác nhận
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modalDetailOrder">
+            <div class="detailOrderContainer">
+                <form action="POST" class="formDetailOrder">
+                    <div class="formDetailOrder-header">
+                        <h3>Chi tiết đơn hàng</h3>
+                        <button type="button" class="closeModal" onclick="closeModalDetailOrder()">
+                            <i class="fa-regular fa-circle-xmark"></i>
+                        </button>
+                    </div>
+                    <div class="formDetailOrder-container">
+                        <div class="formDetailOrder-product">
+                            <div class="detailOrder-product__img">
+                                <img src="./images/senda1.jpg" alt="">
+                            </div>
+                            <div class="detailOrder-product__info">
+                                <div class="detailProduct__name">Sen da</div>
+                                <div class="detailProduct__quantity">x 1</div>
+                            </div>
+                            <div class="detailProduct__totalPrice">1000</div>
+                        </div>
+                        <div class="formDetailOrder-product">
+                            <div class="detailOrder-product__img">
+                                <img src="./images/senda1.jpg" alt="">
+                            </div>
+                            <div class="detailOrder-product__info">
+                                <div class="detailProduct__name">Sen da</div>
+                                <div class="detailProduct__quantity">x 1</div>
+                            </div>
+                            <div class="detailProduct__totalPrice">1000</div>
+                        </div>
+                        <div class="formDetailOrder-product">
+                            <div class="detailOrder-product__img">
+                                <img src="./images/senda1.jpg" alt="">
+                            </div>
+                            <div class="detailOrder-product__info">
+                                <div class="detailProduct__name">Sen da</div>
+                                <div class="detailProduct__quantity">x 1</div>
+                            </div>
+                            <div class="detailProduct__totalPrice">1000</div>
+                        </div>
+                    </div>
+                    <div class="formDetailOrder-infoCustomer">
+                        <div class="formDetailOrder-name">
+                            Họ tên: <span>name</span>
+                        </div>
+                        <div class="formDetailOrder-address">
+                            Địa chỉ giao hàng: <span>address</span>
+                        </div>
+                        <div class="formDetailOrder-phone">
+                            SĐT: <span>phone</span>
+                        </div>
+                    </div>
+                    <div class="formDetailOrder-status">
+                        Tình trạng đơn hàng:
+                    </div>
+                    <div class="footerFormOrderDetail">
+                        <div class="formDetailOrder-totalPriceOrder">
+                            Tổng: 3000đ
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script async src="./assets/js/index.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>SB Admin 2 - Tables</title>
+
+        <!-- Custom fonts for this template -->
+        <link href="./assets/fonts/fontawesome-free-6.4.2-web/css/all.min.css" rel="stylesheet" type="text/css">
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+        <link href="./assets/css/sb-admin-2.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./assets/css/adminPage.css">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    </head>
+
+    <body id="page-top">
+
+        <!-- Page Wrapper -->
+        <div id="wrapper">
+
+            <!-- Sidebar -->
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+                <!-- Sidebar - Brand -->
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.html">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-laugh-wink"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3">Admin Panel</div>
+                </a>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider my-0">
+
+                <!-- Nav Item - Dashboard -->
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span></a>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Quản lí
+                </div>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="adminProductPage.html">
+                        <i class="fa-solid fa-leaf"></i>
+                        <span>Sản phẩm</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="adminCustomerPage.html">
+                        <i class="fa-regular fa-user"></i>
+                        <span>Khách hàng</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="adminOrderPage.html">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Đơn hàng</span>
+                    </a>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider d-none d-md-block">
+
+                <!-- Sidebar Toggler (Sidebar) -->
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+
+            </ul>
+            <!-- End of Sidebar -->
+
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+
+                    <!-- Topbar -->
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                        <!-- Sidebar Toggle (Topbar) -->
+                        <form class="form-inline">
+                            <button type="button" id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </form>
+
+                        <!-- Topbar Search -->
+                        <form
+                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group">
+                                <input type="text" class="form-control bg-light border-0 small"
+                                    placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- Topbar Navbar -->
+                        <ul class="navbar-nav ml-auto">
+
+                            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                            <li class="nav-item dropdown no-arrow d-sm-none">
+                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </a>
+                                <!-- Dropdown - Messages -->
+                                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                    aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto w-100 navbar-search">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control bg-light border-0 small"
+                                                placeholder="Search for..." aria-label="Search"
+                                                aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="button">
+                                                    <i class="fas fa-search fa-sm"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+
+                            <div class="topbar-divider d-none d-sm-block"></div>
+
+                            <!-- Nav Item - User Information -->
+                            <li class="nav-item dropdown no-arrow" id="loginAdminActive">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span id="admin" class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    </span>
+                                    <img class="img-profile rounded-circle" src="./images/avatar.png">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                    aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Profile
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Logout
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow" id="loginAdmin">
+                                <a class="nav-link" href="login.html">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 font-weight-normal">Login</span>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </nav>
+                    <!-- End of Topbar -->
+
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid">
+
+                        <form method="post" class="formCreate" id="plantForm">
+                            <div class="inputTitle">
+                                <h1 class="title">Thêm sản phẩm mới</h1>
+                            </div>
+                            <div class="inputWrapper">
+                                <div class="infomation l-5">
+                                    <div class="inputPlant">
+                                        <input type="text" name="id" id="id" class="input">
+                                    </div>
+                                    <div class="inputPlant">
+                                        <label for="name" class="label">Tên sản phẩm</label>
+                                        <input type="text" name="name" class="input">
+                                    </div>
+                                    <div class="inputPlant">
+                                        <label for="oldPrice" class="label">Giá gốc</label>
+                                        <input type="text" name="oldPrice" class="input" onchange="generateNewPrice()">
+                                    </div>
+                                    <div class="inputPlant">
+                                        <label class="label">Loại</label>
+                                        <div class="typeInput">
+                                            <select name="type" id="type">
+                                                <option>--Choose type--</option>
+                                                <option value="senda">Sen đá</option>
+                                                <option value="lan">Lan</option>
+                                                <option value="cactus">Xương rồng</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="inputPlant">
+                                        <label for="sale" class="label">Khuyến mãi</label>
+                                        <input type="text" name="sale" class="input" onchange="generateNewPrice()">
+                                    </div>
+                                    <div class="inputPlant">
+                                        <label for="newPrice" class="label">Giá mới</label>
+                                        <input type="text" name="newPrice" class="input" readonly>
+                                    </div>
+                                    <div class="inputPlant">
+                                        <label for="description" class="label">Mô tả</label>
+                                        <textarea name="description" class="descriptionText" cols="70"
+                                            rows="8"></textarea>
+                                    </div>
+                                </div>
+                                <div class="upload-image l-7">
+                                    <div class="container">
+                                        <div class="preview">
+                                            <img id="img-preview" src="./images/cloud.png" />
+                                            <label for="file-input">Upload Image</label>
+                                            <input name="file" accept="image/*" type="file" id="file-input" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btnSubmit">
+                                <button type="button" id="create" onclick="createNewProduct()">Thêm</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="myModal" class="modal">
+            <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                    <div class="modal-header flex-column">
+                        <div class="icon-box">
+                            <div class="material-icons"></div>
+                        </div>
+                        <h4 class="modal-title w-100">Are you sure?</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Do you really want to delete these records? This process can not be undone.</p>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button onclick="cancelModal()" type="button" class="btn btn-secondary" data-dismiss="modal">
+                            Cancel
+                        </button>
+                        <button onclick="confirmRemove()" type="button" class="btn btn-danger">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modalDetailOrder">
+            <div class="detailOrderContainer">
+                <form action="POST" class="formDetailOrder">
+                    <div class="formDetailOrder-header">
+                        <h3>Chi tiết đơn hàng</h3>
+                        <button type="button" class="closeModal" onclick="closeModalDetailOrder()">
+                            <i class="fa-regular fa-circle-xmark"></i>
+                        </button>
+                    </div>
+                    <div class="formDetailOrder-container">
+                        <div class="formDetailOrder-product">
+                            <div class="detailOrder-product__img">
+                                <img src="./images/senda1.jpg" alt="">
+                            </div>
+                            <div class="detailOrder-product__info">
+                                <div class="detailProduct__name">Sen da</div>
+                                <div class="detailProduct__quantity">x 1</div>
+                            </div>
+                            <div class="detailProduct__totalPrice">1000</div>
+                        </div>
+                        <div class="formDetailOrder-product">
+                            <div class="detailOrder-product__img">
+                                <img src="./images/senda1.jpg" alt="">
+                            </div>
+                            <div class="detailOrder-product__info">
+                                <div class="detailProduct__name">Sen da</div>
+                                <div class="detailProduct__quantity">x 1</div>
+                            </div>
+                            <div class="detailProduct__totalPrice">1000</div>
+                        </div>
+                        <div class="formDetailOrder-product">
+                            <div class="detailOrder-product__img">
+                                <img src="./images/senda1.jpg" alt="">
+                            </div>
+                            <div class="detailOrder-product__info">
+                                <div class="detailProduct__name">Sen da</div>
+                                <div class="detailProduct__quantity">x 1</div>
+                            </div>
+                            <div class="detailProduct__totalPrice">1000</div>
+                        </div>
+                    </div>
+                    <div class="formDetailOrder-infoCustomer">
+                        <div class="formDetailOrder-name">
+                            Họ tên: <span>name</span>
+                        </div>
+                        <div class="formDetailOrder-address">
+                            Địa chỉ giao hàng: <span>address</span>
+                        </div>
+                        <div class="formDetailOrder-phone">
+                            SĐT: <span>phone</span>
+                        </div>
+                    </div>
+                    <div class="formDetailOrder-status">
+                        Tình trạng đơn hàng:
+                    </div>
+                    <div class="footerFormOrderDetail">
+                        <div class="formDetailOrder-totalPriceOrder">
+                            Tổng: 3000đ
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script async src="./assets/js/main.js"></script>
+        <script src="./assets/vendor/jquery.min.js"></script>
+        <script src="./assets/vendor/bootstrap.bundle.min.js"></script>
+        <script src="./assets/vendor/sb-admin-2.min.js"></script>
+        <script>
+            const input = document.getElementById('file-input');
+            const image = document.getElementById('img-preview');
+
+            input.addEventListener('change', (e) => {
+                if (e.target.files.length) {
+                    const src = URL.createObjectURL(e.target.files[0]);
+                    image.src = src;
+                }
+            });
+        </script>
+    </body>
+
+</html>

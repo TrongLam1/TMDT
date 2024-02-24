@@ -19,8 +19,13 @@ html {
 }
 
 .l-2 {
-    flex: 0 0 20%;
-    max-width: 20%;
+    flex: 0 0 18.75%;
+    max-width: 18.75%;
+}
+
+.l-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
 }
 
 .l-5 {
@@ -31,6 +36,11 @@ html {
 .l-7 {
     flex: 0 0 58.33333%;
     max-width: 58.33333%;
+}
+
+.l-9 {
+    flex: 0 0 81.25%;
+    max-width: 81.25%;
 }
 
 .l-10 {
@@ -46,29 +56,65 @@ html {
     display: flex;
 }
 
-.header {
-    background-color: #4CAF50;
-    height: 80px;
+#adminPage {
     display: flex;
+    background-color: #fafafa;
+}
+
+.header {
+    /* background-color: #3d84b3e6; */
+    background-color: rgba(0, 0, 0, .7);
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 225px;
 }
 
 .header-wrapper {
     display: flex;
-    justify-content: space-between;
-    width: 1200px;
-    max-width: 100%;
-    margin: 0 auto;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
+    width: 100%;
+    max-width: 225px;
 }
 
 .header-tag {
     display: flex;
-    width: 45%;
+    flex-direction: column;
+    width: 100%;
     justify-content: space-between;
 }
 
+.mainHeaderLogin {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header-login {
+    display: none;
+}
+
+.header-login.login {
+    display: block;
+}
+
+.header-login.login button {
+    border: none;
+    background-color: #4caf50;
+    color: #fff;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.header-login.login button:hover {
+    color: yellow;
+}
+
 .logo a,
-.tag-item a,
+.tag-item button,
 .header-login a {
     text-decoration: none;
     font-size: 1rem;
@@ -81,9 +127,33 @@ html {
 }
 
 .logo a:hover,
-.tag-item a:hover,
 .header-login a:hover {
     color: yellow;
+}
+
+.header-tag .tag-item {
+    display: flex;
+    height: 70px;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.header-tag .tag-item button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.header-tag .tag-item button:hover {
+    color: yellow;
+    background-color: #3e84b3;
 }
 
 .main {
@@ -97,10 +167,35 @@ html {
 .inputTitle {
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
-    height: 70px;
+    margin-bottom: 12px;
+    height: 50px;
     padding-left: 20px;
-    background-color: #5cb1f3;
+    background-color: #708ada;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+    text-align: center;
+}
+
+.inputTitle .title {
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.inputTitle button {
+    margin-left: 15px;
+    color: #fff;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.inputTitle button:hover {
+    color: yellow;
+}
+
+.inputTitle button i {
+    font-size: 1.2rem;
 }
 
 .title {
@@ -138,11 +233,13 @@ html {
     background-color: #FFBABA;
 }
 
-.formCreate {
-    width: 1200px;
+.formCreate,
+.formUpdate {
+    max-width: 1000px;
     margin: 0 auto;
-    box-shadow: 0px 3px 10px 4px lightblue;
+    box-shadow: 0px 1px 5px 2px rgb(190, 216, 224);
     background-color: #fff;
+    border-radius: 12px;
 }
 
 .inputWrapper {
@@ -162,99 +259,58 @@ html {
 }
 
 .upload-image .container {
-    width: 500px;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    background-color: rgb(255, 240, 222);
 }
 
-.img-area {
-    position: relative;
-    width: 100%;
-    height: 240px;
-    background: var(--grey);
-    margin-bottom: 30px;
-    border-radius: 15px;
-    overflow: hidden;
+.upload-image .container #file-input {
+    display: none;
+}
+
+.upload-image .container .preview {
+    padding: 30px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
-}
-
-.img-area i {
-    font-size: 100px;
-}
-
-.img-area h3 {
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 6px;
-}
-
-.img-area p {
-    color: #999;
-}
-
-.img-area p span {
-    font-weight: 600;
-}
-
-.img-area img {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
+    max-width: 300px;
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 20px rgba(170, 170, 170, 0.2);
+}
+
+.upload-image .container img {
+    width: 100%;
     object-fit: cover;
-    object-position: center;
-    z-index: 100;
+    margin-bottom: 20px;
 }
 
-.img-area::before {
-    content: attr(data-img);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, .5);
-    color: #fff;
-    font-weight: 500;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
-    opacity: 0;
-    transition: all .3s ease;
-    z-index: 200;
-}
-
-.img-area.active:hover::before {
-    opacity: 1;
-}
-
-.select-image {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    padding: 16px 0;
-    border-radius: 15px;
-    background: var(--blue);
-    color: #fff;
-    font-weight: 500;
-    font-size: 16px;
-    border: none;
+.upload-image .container label {
+    font-weight: 600;
     cursor: pointer;
-    transition: all .3s ease;
-}
-
-.select-image:hover {
-    background: var(--dark-blue);
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 20px;
+    background-color: rgb(101, 101, 255);
 }
 
 .inputPlant {
     display: flex;
     flex-direction: column;
-    margin: 20px 0px;
+    margin: 6px 0px;
+}
+
+.inputPlant #id {
+    display: none;
+}
+
+.inputPlant #type {
+    font-size: 0.8rem;
 }
 
 .inputPlant .label {
@@ -268,21 +324,25 @@ html {
 }
 
 .inputPlant .input {
-    height: 35px;
-    width: 100%;
+    height: 30px;
+    max-width: 100%;
     padding-left: 10px;
     border-radius: 4px;
     outline: none;
     border: 1px solid #ccc;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
-.inputPlant .input:focus {
+.inputPlant .input:focus,
+.inputPlant .descriptionText:focus {
     border: 2px solid #5cb1f3;
 }
 
 .inputPlant .descriptionText {
     padding: 5px;
+    outline: none;
+    border: 1px solid #ccc;
+    font-size: 0.8rem;
 }
 
 #sale {
@@ -303,22 +363,36 @@ html {
 
 .btnSubmit button {
     height: 40px;
-    width: 20%;
+    width: 15%;
     font-weight: bold;
-    background-color: rgba(127, 255, 212, 0.8);
+    background-color: #4e73df;
     border: none;
-}
-
-.btnSubmit button:hover {
-    background-color: #7fffd4;
+    color: #fff;
+    border-radius: 10px;
     cursor: pointer;
 }
 
+.btnSubmit #update {
+    display: none;
+}
+
+.btnSubmit button:hover {
+    background-color: #1f4edd;
+}
+
 /*--------------------------- Body Admin Page ---------------------------*/
+.mainHeader {
+    height: 60px;
+    width: 1115px;
+    background-color: rgba(0, 0, 0, .7);
+    padding-right: 100px;
+}
+
 .bodyWrapper {
     width: 1200px;
     max-width: 100%;
     margin: 0 auto;
+    padding: 20px 15px;
 }
 
 .navBody {
@@ -328,8 +402,7 @@ html {
     height: 90px;
 }
 
-.amountPlant,
-.amountCustomer {
+.amount {
     font-weight: bold;
     font-size: 1.1rem;
     line-height: 2;
@@ -416,23 +489,11 @@ html {
 }
 
 .btnAddPlant {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    width: 140px;
-    background-color: #4CAF50;
-    outline: none;
+    font-size: 1.5rem;
+    background-color: #3d84b3e6;
     border: none;
-    border-radius: 15px;
-}
-
-.btnAddPlant a {
-    text-decoration: none;
-    color: #000;
-    font-size: 0.9rem;
-    color: #fff;
-    font-weight: bold;
+    background-color: transparent;
+    margin-left: 10px;
 }
 
 .tableMain {
@@ -445,6 +506,10 @@ html {
 .tableList table {
     width: 100%;
     border-collapse: collapse;
+}
+
+.tableTitle table tr {
+    text-align: center;
 }
 
 .tableTitle table tr th {
@@ -467,8 +532,8 @@ html {
     border-bottom: none;
 }
 
-.tableItem:nth-child(even) {
-    background-color: #f2f2f2;
+.tableItem:hover {
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 #imagePlant {
@@ -477,8 +542,9 @@ html {
     object-fit: cover;
 }
 
-.btnUpdate,
-.btnDelete {
+.btnEdit,
+.btnDelete,
+.btnViewOrder {
     height: 30px;
     width: 30px;
     border-radius: 4px;
@@ -486,95 +552,50 @@ html {
     cursor: pointer;
     border: none;
     background-color: transparent;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
 }
 
-.btnUpdate:hover {
-    color: #4CAF50;
+.btnEdit {
+    color: #000;
+}
+
+.btnEdit:hover {
+    color: #4e73df;
 }
 
 .btnDelete:hover {
     color: red;
 }
 
+.btnViewOrder:hover {
+    color: #4e73df;
+}
+
+.btnUpdateStatus {
+    background-color: #4e73df;
+    color: #fff;
+    font-size: 0.9rem;
+    height: 30px;
+    width: 70px;
+    border: none;
+    border-radius: 8px;
+}
+
+.btnUpdateStatus:hover {
+    background-color: #0038e0;
+}
+
+.btnUpdateStatus.active {
+    background-color: #ccc;
+}
+
 /* --------------------------- Pagination ---------------------------- */
-/* .paginationWrapper {
-    display: flex;
-    justify-content: space-around;
-}
-
-#dots {
-    cursor: text;
-    pointer-events: none;
-}
-
-.pagination {
-    list-style: none;
-    display: inline-block;
-    padding: 0;
-    margin-top: 10px;
-}
-
-.pagination li {
-    display: inline;
-    text-align: center;
-}
-
-.pagination a {
-    float: left;
-    display: block;
-    font-size: 14px;
-    text-decoration: none;
-    padding: 5px 12px;
-    color: #fff;
-    margin-left: -1px;
-    border: 1px solid transparent;
-    line-height: 1.5;
-}
-
-.pagination a.active {
-    cursor: default;
-}
-
-.pagination a:active {
-    outline: none;
-}
-
-.modal-1 li:first-child a {
-    -moz-border-radius: 6px 0 0 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px 0 0 6px;
-}
-
-.modal-1 li:last-child a {
-    -moz-border-radius: 0 6px 6px 0;
-    -webkit-border-radius: 0;
-    border-radius: 0 6px 6px 0;
-}
-
-.modal-1 a {
-    border-color: #ddd;
-    color: #4285F4;
-    background: #fff;
-}
-
-.modal-1 a:hover {
-    background: #eee;
-}
-
-.modal-1 a.active,
-.modal-1 a:active {
-    border-color: #4285F4;
-    background: #4285F4;
-    color: #fff;
-} */
-
 .pagination {
     padding: 10px 0;
 }
 
 .pagination ul {
-    width: 35%;
+    width: 45%;
     height: 40px;
     margin: auto;
     display: flex;
@@ -620,10 +641,10 @@ html {
     cursor: default;
 }
 
-.pagination ul li.btn {
+.pagination ul li.pagination-btn {
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 10px;
     border-radius: 50px;
     height: 25px;
 }
@@ -634,4 +655,323 @@ html {
 .pagination ul li:last-child:hover {
     color: #fff;
     background: #20B2AA;
+}
+
+/* ----------------------------------- Modal confirm ---------------------------------- */
+#myModal {
+    display: none;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.modal-confirm {
+    color: #636363;
+    width: 400px;
+}
+
+.modal-confirm .modal-content {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.modal-confirm .modal-footer {
+    border-bottom: none;
+    position: relative;
+}
+
+.modal-confirm h4 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin: 30px 0 -10px;
+}
+
+.modal-confirm .close {
+    position: absolute;
+    top: -5px;
+    right: -2px;
+}
+
+.modal-confirm .modal-body {
+    color: #999;
+}
+
+.modal-confirm .modal-footer {
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 13px;
+    padding: 10px 15px 25px;
+}
+
+.modal-confirm .modal-footer a {
+    color: #999;
+}
+
+.modal-confirm .icon-box {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    border-radius: 50px;
+    z-index: 9;
+    text-align: center;
+    border: 3px solid #f15e5e;
+}
+
+.modal-confirm .icon-box i {
+    color: #f15e5e;
+    font-size: 3rem;
+    display: inline-block;
+    margin-top: 13px;
+}
+
+.modal-confirm .btn,
+.modal-confirm .btn:active {
+    color: #fff;
+    border-radius: 4px;
+    background: #60c7c1;
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    min-width: 120px;
+    border: none;
+    min-height: 40px;
+    border-radius: 3px;
+    margin: 0 5px;
+}
+
+.modal-confirm .btn-secondary {
+    background: #c1c1c1;
+}
+
+.modal-confirm .btn-secondary:hover,
+.modal-confirm .btn-secondary:focus {
+    background: #a8a8a8;
+}
+
+.modal-confirm .btn-danger {
+    background: #f15e5e;
+}
+
+.modal-confirm .btn-danger:hover,
+.modal-confirm .btn-danger:focus {
+    background: #ee3535;
+}
+
+.trigger-btn {
+    display: inline-block;
+    margin: 100px auto;
+}
+
+.table.table-bordered th,
+.table.table-bordered td {
+    text-align: center;
+}
+
+/* -------------------------------- Modal Detail Order -------------------------------- */
+.modalDetailOrder {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+
+.detailOrderContainer {
+    width: 500px;
+    max-width: 100%;
+    margin: 50px auto;
+    /* height: 500px; */
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.formDetailOrder {
+    /* height: 100%; */
+    overflow-y: auto;
+    width: 100%;
+    position: relative;
+    padding: 20px;
+}
+
+.formDetailOrder::-webkit-scrollbar {
+    width: 5px;
+}
+
+.formDetailOrder::-webkit-scrollbar-thumb {
+    background: #fff;
+}
+
+.formDetailOrder-header {
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.formDetailOrder-header h3 {
+    color: #000;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+.formDetailOrder-header button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.formDetailOrder-header button:hover {
+    color: red;
+}
+
+.formDetailOrder-product {
+    display: flex;
+    margin: 10px 0;
+    align-items: center;
+}
+
+.detailOrder-product__img {
+    max-width: 100px;
+    max-height: 100px;
+    margin-right: 15px;
+}
+
+.detailOrder-product__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detailProduct__totalPrice {
+    position: absolute;
+    right: 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.formDetailOrder-name {
+    border-top: 1px solid #ccc;
+}
+
+.footerFormOrderDetail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border-top: 2px solid #ccc;
+    margin-top: 10px;
+}
+
+.formDetailOrder-totalPriceOrder {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #000;
+    margin: 10px 0;
+}
+
+.formDetailOrder-btnUpdate {
+    width: 110px;
+    height: 40px;
+}
+
+.updateStatusOrder {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: #4e73df;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.updateStatusOrder:hover {
+    background-color: #1a4ce2;
+}
+
+#admin {
+    font-size: 1rem;
+}
+
+.productDescription {
+    line-height: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    height: 149px;
+}
+
+/* ------------------------------ Date Picker --------------------------------- */
+.tabsChart {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.tabsChart button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+.tabsChart button:hover {
+    background-color: #ddd;
+}
+
+.tabsChart button.active {
+    background-color: #ccc;
+}
+
+.getYear {
+    display: none;
+    margin-bottom: 10px;
+}
+
+.getYear input {
+    outline: none;
+    padding-left: 6px;
+    height: 30px;
+    font-size: 0.85rem;
+}
+
+.datePicker {
+    display: none;
+    margin-bottom: 10px;
+}
+
+.datePicker input {
+    max-width: 150px;
+    height: 30px;
+    font-size: 0.85rem;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+.startDate,
+.endDate {
+    display: flex;
+    align-items: center;
+}
+
+.getYear button,
+.datePicker button {
+    border: none;
+    background-color: #4e73df;
+    color: #fff;
+    width: 60px;
+    height: 30px;
 }

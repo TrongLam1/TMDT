@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="./assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,7 +22,7 @@
                     <div class="header-logo">
                         <a href="index.html" class="logo">MI<span>LO</span><i class="fas fa-seedling"></i><span>SM</span></a>
                         <div action="" class="serach-bar-container">
-                            <input type="search" id="search-bar" placeholder="Search here...">
+                            <input type="search" id="search-bar" placeholder="Tìm kiếm...">
                             <button type="button" class="fas fa-search"></button>
                         </div>
                     </div>
@@ -31,20 +31,27 @@
                     <div class="header-menu">
                         <div id="menu-bar" class="fas fa-bars "></div>
                         <nav class="nav-bar">
-                            <a href="index.html">Home</a>
-                            <button onclick="showProductByType(this)" value="all">Product</button>
-                            <a href="Contact.html">Contact</a>
+                            <a href="index.html">Trang chủ</a>
+                            <button onclick="showProductByType(this)" value="all">Sản phẩm</button>
+                            <a href="Contact.html">Liên hệ</a>
                         </nav>
                         <div class="icons">
                             <a href="#" class="fas fa-shopping-cart" id="cart-btn"></a>
-                            <a href="login.html" cl id="login-btn"> LOGIN</a>
+                            <a href="login.html" id="login-btn"> Đăng nhập</a>
                         </div>
                         <div class="icons login">
                             <a href="cart.html" class="fas fa-shopping-cart" id="cart-btn"></a>
-                            <a href="#" class="userLogin">Admin</a>
-                            <a href="#" class="logout">
-                                <button onclick="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
-                            </a>
+                            <a href="#" onclick="dropDownUser()" class="userLogin"></a>
+                            <div class="dropDownUser">
+                                <a href="profileUser.html" class="userInfo"><span>Thông tin người dùng</span></a>
+                                <a href="historyOrder.html" class="userCart"><span>Lịch sử mua hàng</span></a>
+                                <a href="#" class="logout">
+                                    <button onclick="logout()">
+                                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                        Đăng xuất
+                                    </button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -92,6 +99,14 @@
                         </div>
                     </div>
                     <div class="listProductWrapper l-9">
+                        <div class="findProduct-sort">
+                            <button class="sortWrapper">
+                                <select name="sort" id="sort">
+                                    <option value="0">Giá tăng dần</option>
+                                    <option value="1">Giá giảm dần</option>
+                                </select>
+                            </button>
+                        </div>
                         <div class="listProduct">
                             <div id="listProductPage" class="productList">
                                 <div class="productItemWrapper l-3">
@@ -189,11 +204,11 @@
                         </div>
                         <div class="pagination">
                             <ul>
-                                <li class="numb active" onclick="createPagination(totalPages, 1)"><span>1</span></li>
+                                <!-- <li class="numb active" onclick="createPagination(totalPages, 1)"><span>1</span></li>
                                 <li class="numb " onclick="createPagination(totalPages, 2)"><span>2</span></li>
                                 <li class="numb " onclick="createPagination(totalPages, 3)"><span>3</span></li>
                                 <li class="pagination-btn active" onclick="createPagination(totalPages, 2)"><span>Next <i
-                                            class="fas fa-angle-right"></i></span></li>
+                                            class="fas fa-angle-right"></i></span></li> -->
                             </ul>
                         </div>
                     </div>
@@ -202,12 +217,12 @@
             <!-- footer -->
             <section class="footer" id="Contact">
                 <div class="box-container">
-                    <div class="box l-2-4">
+                    <div class="box l-2-4 m-4 c-6">
                         <h3>VỀ CHÚNG TÔI</h3>
                         <span>Giới thiệu</span>
                     </div>
-
-                    <div class="box l-2-4">
+            
+                    <div class="box l-2-4 m-4 c-6">
                         <h3>CHÍNH SÁCH</h3>
                         <ul>
                             <li>Chính sách bảo hành</li>
@@ -216,24 +231,19 @@
                             <li>Chính sách bảo mật</li>
                         </ul>
                     </div>
-
-                    <div class="box l-2-4">
+            
+                    <div class="box l-2-4 m-4 c-6">
                         <h3>THÔNG TIN LIÊN HỆ</h3>
                         <a href="#"> <i class="fas fa-phone"></i> 0123456789 </a>
                         <a href="#"> <i class="fas fa-envelope"></i> milosm@gmail.com </a>
-                        <a href="#"> <i class="fas fa-map-marker-alt"></i> Số 2, Đường Võ Oanh, P.25, Q. Bình Thạnh,
-                            Thành Phố
-                            Hồ
+                        <a href="#"> <i class="fas fa-map-marker-alt"></i> Số 2, Đường Võ Oanh, P.25, Q. Bình Thạnh, Thành Phố Hồ
                             Chí Minh </a>
                     </div>
-
-                    <div class="box l-2-4">
+            
+                    <div class="box l-2-4 m-4 c-6">
                         <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
-                        <a href="#"> <i class="fa-brands fa-square-facebook" id="facebook" style="color: blue;"></i>
-                            Facebook
-                        </a>
-                        <a href="#"> <i class="fa-brands fa-square-twitter" id="twitter" style="color: aqua;"></i>
-                            Twitter </a>
+                        <a href="#"> <i class="fa-brands fa-square-facebook" id="facebook" style="color: blue;"></i> Facebook </a>
+                        <a href="#"> <i class="fa-brands fa-square-twitter" id="twitter" style="color: aqua;"></i> Twitter </a>
                         <a href="#"> <i class="fab fa-instagram" id="instagram" aria-hidden="true"></i> Instagram </a>
                     </div>
                 </div>
@@ -244,7 +254,7 @@
                 </div>
             </div>
         </div>
-        <script async src="index.js"></script>
+        <script async src="./assets/js/index.js"></script>
     </body>
 
 </html>
